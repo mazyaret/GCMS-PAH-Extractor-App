@@ -1,0 +1,56 @@
+# GC/MS PAH Streamlit Web App v5
+
+Unified platform with two tabs:
+
+1. **ISU / previous format**
+   - Upload one GC/MS Excel output file.
+   - Optional: upload submission/metadata file.
+   - Review dilution factor, extract volume, fabric size, fabric mass, and fuel mass loss.
+
+2. **University of Iowa format**
+   - Upload submission file.
+   - Upload 16-PAH results workbook.
+   - Upload surrogate results workbook.
+   - Review dilution factor and normalization inputs.
+
+## New in v5
+
+The output keeps all previous columns and adds **surrogate recovery-corrected** columns.
+
+Formula:
+
+```
+Recovery-Corrected Conc. = Corrected Conc. × 100 / Assigned Surrogate Recovery %
+```
+
+These are added in addition to the original DF-corrected columns, not replacing them.
+
+## ISU recovery surrogate mapping
+
+- Naphthalene, Acenaphthylene, Acenaphthene → 2-fluorobiphenyl
+- Fluorene, Phenanthrene, Anthracene → Fluorene-d10
+- Fluoranthene, Pyrene, Benz[a]anthracene, Chrysene → Pyrene-d10
+- Benzo[b]fluoranthene, Benzo[k]fluoranthene, Benzo[a]pyrene, Indeno[1,2,3-cd]pyrene, Dibenz[a,h]anthracene, Benzo[g,h,i]perylene → Benzo[a]pyrene-d12
+
+## UIowa recovery surrogate mapping
+
+- LMW PAHs → 2-Fluorobiphenyl
+- HMW PAHs → p-Terphenyl-d14
+
+## Deployment on Streamlit Cloud
+
+Upload these files to GitHub:
+
+- `app_v5.py`
+- `GCMS_PAH_Extractor_NoTableFix_v5.py`
+- `GCMS_PAH_Extractor_UIowa_v3.py`
+- `requirements.txt`
+- `README_v5.md`
+
+Create a new Streamlit app with:
+
+- Repository: `mazyaret/GCMS-PAH-Extractor-App`
+- Branch: `main`
+- Main file path: `app_v5.py`
+
+Suggested app URL: `gcms-pah-extractor-v5`
